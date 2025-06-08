@@ -1,0 +1,22 @@
+from rest_framework import serializers
+
+
+class PredictionSerializer(serializers.Serializer):
+    predictedType = serializers.CharField()
+    ldapInjection = serializers.FloatField()
+    osCommanding = serializers.FloatField()
+    pathTraversal = serializers.FloatField()
+    ssi = serializers.FloatField()
+    shellShock = serializers.FloatField()
+    sqlInjection = serializers.FloatField()
+    xpathInjection = serializers.FloatField()
+    xss = serializers.FloatField()
+    normal = serializers.FloatField()
+
+    uriAttackArray = serializers.ListField(child=serializers.CharField())
+    queryAttackArray = serializers.ListField(child=serializers.CharField())
+    bodyAttackArray = serializers.ListField(child=serializers.CharField())
+
+    uri = serializers.IntegerField()
+    query = serializers.IntegerField()
+    body = serializers.IntegerField()
