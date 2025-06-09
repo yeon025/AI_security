@@ -37,6 +37,7 @@ def predict_type(request):
         "xss": round(probs[0][7], 2),
         "normal": round(probs[0][8], 2),
         "detectedString": detected_string,
+        "payload": payload,
     }
     result_serializer = PredictionSerializer(result)
 

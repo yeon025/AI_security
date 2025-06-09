@@ -14,3 +14,4 @@ class PredictionSerializer(serializers.Serializer):
     normal = serializers.FloatField()
 
     detectedString = serializers.ListField(child=serializers.CharField())
+    payload = serializers.CharField()
