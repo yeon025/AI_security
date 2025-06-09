@@ -1,2 +1,6 @@
 venv/
 project/pkl/*.pkl
+project/predictapp/__pycache__/*.pyc
+project/project/__pycache__/*.pyc
+project/service/__pycache__/*.pyc
+project/db.sqlite3

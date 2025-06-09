@@ -13,10 +13,4 @@ class PredictionSerializer(serializers.Serializer):
     xss = serializers.FloatField()
     normal = serializers.FloatField()
 
-    uriAttackArray = serializers.ListField(child=serializers.CharField())
-    queryAttackArray = serializers.ListField(child=serializers.CharField())
-    bodyAttackArray = serializers.ListField(child=serializers.CharField())
-
-    uri = serializers.IntegerField()
-    query = serializers.IntegerField()
-    body = serializers.IntegerField()
+    detectedString = serializers.ListField(child=serializers.CharField())
