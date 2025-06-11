@@ -1,7 +1,13 @@
 from rest_framework import serializers
 
 
-class PredictionSerializer(serializers.Serializer):
+class PredictionRequestSerializer(serializers.Serializer):
+    payload = serializers.CharField(
+        default="POST /search HTTP/1.1\nHost: vulnerable.site\nContent-Type: application/x-www-form-urlencoded\n\nq=<script>alert('x')</script>"
+    )
+
+
+class PredictionResponseSerializer(serializers.Serializer):
     predictedType = serializers.CharField()
     ldapInjection = serializers.FloatField()
     osCommanding = serializers.FloatField()

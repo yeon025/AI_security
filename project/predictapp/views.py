@@ -1,13 +1,18 @@
-from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from service.convert_to_dataframe import convert_string
 from service.preprocessing import preprocessing
 from service.predict import predict, detect_attack_string
-from .serializers import PredictionSerializer
+from .serializers import PredictionRequestSerializer, PredictionResponseSerializer
+from drf_yasg.utils import swagger_auto_schema
 
 
 # Create your views here.
+@swagger_auto_schema(
+    method="post",
+    request_body=PredictionRequestSerializer,
+    responses={200: PredictionResponseSerializer},
+)
 @api_view(["POST"])
 def predict_type(request):
     payload = request.data.get("payload")
@@ -39,6 +44,6 @@ def predict_type(request):
         "detectedString": detected_string,
         "payload": payload,
     }
-    result_serializer = PredictionSerializer(result)
+    result_serializer = PredictionResponseSerializer(result)
 
     return Response(result_serializer.data)
